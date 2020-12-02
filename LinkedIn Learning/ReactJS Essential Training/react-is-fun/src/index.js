@@ -1,33 +1,13 @@
-import React, { Component } from 'react';
-import ReactDOM, { render } from 'react-dom';
+import React from 'react';
+import { render } from 'react-dom';
+import HelloWorld from './subprojects/1 - helloWorld/helloWorld'
+import PropsMessage from './subprojects/1 - helloWorld/propsMessage'
+import FruitsCount from './subprojects/2 - fruitsBasket/fruitsCount'
+import FruitsGoal from './subprojects/2 - fruitsBasket/fruitsGoal'
+import FunctionComponent from './subprojects/2 - fruitsBasket/functionComponent'
+import LibraryClass from "./subprojects/3 - library/libraryClass";
+import FavoriteColorForm from "./subprojects/4 - form/favoriteColorForm";
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-class HelloWorld extends React.Component {
-    render() {
-        return(
-            <div>
-                <p>
-                    hello world?
-                </p>
-            </div>
-        )
-    }
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-class PropsMessage extends Component {
-    render() {
-        return(
-            <div>
-                <h1 style={{color: this.props.color}}>
-                    {this.props.message}
-                </h1>
-            </div>
-        )
-    }
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 let fruits = {
     apples: 10,
     bananas: 4,
@@ -35,115 +15,53 @@ let fruits = {
     goal: 50
 }
 
-class FruitsCount extends Component {
-    render() {
-        return (
-            <div>
-                <h1>
-                    We have {this.props.apples + this.props.bananas + this.props.pears} fruits!
-                </h1>
-                <p>
-                    We have {this.props.apples} apples.
-                </p>
-                <p>
-                    We have {this.props.bananas} bananas.
-                </p>
-                <p>
-                    We have {this.props.pears} pears.
-                </p>
-                <h2>
-                    Our goal is {this.props.goal}!
-                </h2>
-            </div>
-        )
-    }
-}
-
-var FruitsStyle = {
-    color: "orange",
-    background: "black"
-}
-
-class FruitsGoal extends Component {
-    render() {
-        const {apples, bananas, pears, goal} = this.props
-        const total = apples + bananas + pears
-        const goalPercent = (total, goal) => {
-            return 1.0 * total / goal
-        }
-        return (
-            <div>
-                <h1>
-                    We have {total} fruits, and we need {goal} fruits.
-                </h1>
-                <h2 style={FruitsStyle}>
-                    We're {goalPercent(total, goal)} percent of the way!
-                </h2>
-            </div>
-        )
-    }
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-const goalPercent = (total, goal) => {
-    return 1.0 * total / goal
-}
-
-const FunctionComponent = ({apples, bananas, pears, goal}) => {
-    return (
-        <div>
-            <h1>
-                This text came from a function component!
-            </h1>
-            <p>
-                {apples} apples
-            </p>
-            <p>
-                {bananas} bananas
-            </p>
-            <p>
-                {pears} pears
-            </p>
-            <p>
-                goal is {goal}
-            </p>
-            <p>
-                we're {goalPercent(apples + bananas + pears, goal)} percent of the way!
-            </p>
-        </div>
-    )
-}
+// dynamic book list
+let bookList = [
+    {"title": "The Sun Also Rises", "author": "Ernest Hemingway", "pages": 260},
+    {"title": "White Teeth", "author": "Zadie Smith", "pages": 48},
+    {"title": "Catch 22", "author": "Joseph Heller", "pages": 519},
+    {}
+]
 
 //--------------------------------------------------------------------------------------------------------------------//
 
 render(
     <div>
 
-        {/*<HelloWorld />,*/}
-
-        {/*<PropsMessage message={"This is a custom message!"} color={"purple"} />,*/}
-
-        {/*<FruitsCount*/}
-        {/*    apples={fruits.apples}*/}
-        {/*    bananas={fruits.bananas}*/}
-        {/*    pears={fruits.pears}*/}
-        {/*    goal={fruits.goal}*/}
-        {/*/>*/}
-        {/*<FruitsGoal*/}
-        {/*    apples={fruits.apples}*/}
-        {/*    bananas={fruits.bananas}*/}
-        {/*    pears={fruits.pears}*/}
-        {/*    goal={fruits.goal}*/}
-        {/*/>*/}
-        {/*<FunctionComponent*/}
-        {/*        apples={fruits.apples}*/}
-        {/*        bananas={fruits.bananas}*/}
-        {/*        pears={fruits.pears}*/}
-        {/*        goal={fruits.goal}*/}
-        {/*/>*/}
-
-
+        <HelloWorld />,
+        <p>
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        </p>
+        <PropsMessage message={"This is a custom message!"} color={"purple"} />,
+        <p>
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        </p>
+        <FruitsCount
+            apples={fruits.apples}
+            bananas={fruits.bananas}
+            pears={fruits.pears}
+            goal={fruits.goal}
+        />
+        <FruitsGoal
+            apples={fruits.apples}
+            bananas={fruits.bananas}
+            pears={fruits.pears}
+            goal={fruits.goal}
+        />
+        <FunctionComponent
+                apples={fruits.apples}
+                bananas={fruits.bananas}
+                pears={fruits.pears}
+                goal={fruits.goal}
+        />
+        <p>
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        </p>
+        <LibraryClass books={bookList}/>
+        <p>
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        </p>
+        <FavoriteColorForm />
 
     </div>,
     document.getElementById("root")

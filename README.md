@@ -5,9 +5,11 @@ Proficient:
 - Java
 - Python
 
+Adequate:
+- ReactJS
+
 To Master:
 - JS
-- React
 - Ruby
 - AWS
 - TensorFlow

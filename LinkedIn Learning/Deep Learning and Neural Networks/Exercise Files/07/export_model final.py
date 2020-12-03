@@ -1,7 +1,7 @@
 import pandas as pd
-import keras
-from keras.models import Sequential
-from keras.layers import *
+import tensorflow.keras as keras
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import *
 import tensorflow as tf
 
 training_data_df = pd.read_csv("sales_data_training_scaled.csv")

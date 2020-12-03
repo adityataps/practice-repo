@@ -1,6 +1,6 @@
 import pandas as pd
-from keras.models import Sequential
-from keras.layers import *
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import *
 
 training_data_df = pd.read_csv("sales_data_training_scaled.csv")
 
@@ -37,7 +37,7 @@ print("The mean squared error (MSE) for the test data set is: {}".format(test_er
 X = pd.read_csv("proposed_new_product.csv").values
 
 # Make a prediction with the neural network
-prediction =
+prediction = model.predict(X)
 
 # Grab just the first element of the first prediction (since that's the only have one)
 prediction = prediction[0][0]
